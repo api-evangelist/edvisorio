@@ -1,0 +1,29 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.edvisor.io/
+docs: https://docs.edvisor.io/
+summary:
+  types: [http]
+  http_scheme: bearer
+  token_type: api-key
+  oauth2_flows: []
+  api_key_in: [header]
+schemes:
+  - name: bearerApiKey
+    type: http
+    scheme: bearer
+    in: header
+    header: Authorization
+    format: "Authorization: Bearer <your_edvisor_api_key>"
+    description: >-
+      Edvisor.io uses long-lived API keys presented as an HTTP Bearer token in the
+      Authorization header on every request to the GraphQL API
+      (https://api-v2.edvisor.io/graphql).
+    provisioning: >-
+      API keys are issued on request by Edvisor support (contact support@edvisor.io);
+      there is no self-service key management surface documented.
+    server_side_only: true
+    notes: >-
+      Edvisor requires all requests be made from a server, never a customer-facing
+      front end, to avoid exposing the key. School Company API keys can be retrieved
+      via the getSchoolCompanyApiKey GraphQL query.
