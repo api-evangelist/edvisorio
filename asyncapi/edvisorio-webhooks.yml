@@ -1,0 +1,43 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.edvisor.io/
+spec_type: Webhooks
+summary: >-
+  Edvisor.io registers HTTP webhooks against a customer-supplied endpoint so an
+  external system (CRM, back-office) can stay in sync with an agency account.
+  Consumers subscribe to specific resource events; on each change Edvisor sends a
+  POST with a JSON body carrying the actor, timestamp, and before/after data.
+delivery:
+  transport: https
+  method: POST
+  subscription: managed by Edvisor per webhook registration (contact support@edvisor.io)
+  ack: endpoint must return a 2xx HTTP status; any other code (including 3xx) is treated as a failed delivery
+  retry: failed deliveries are retried every 15 minutes for up to 3 days
+  event_name_format: "resource:action"
+payload:
+  fields:
+    - name: created
+      description: Timestamp of when this event occurred
+    - name: user
+      description: Information about the actor who triggered the event (user.userId, user.firstname, ...)
+    - name: data.after
+      description: Object state after the change
+    - name: data.before
+      description: Object state before the change
+events:
+  - resource: Student
+    events: [student:create, student:update, student:delete]
+  - resource: School Company
+    events: [school:create, school:update, school:delete]
+  - resource: Campus
+    events: [campus:create, campus:update, campus:delete]
+  - resource: Offering
+    events: [offering:create, offering:update, offering:delete]
+  - resource: Start Date Template
+    events: [startDateTemplate:create, startDateTemplate:update, startDateTemplate:delete]
+  - resource: Student Quote
+    events: [studentQuote:create, studentQuote:update]
+notes: >-
+  No AsyncAPI document is published by the provider; this is the documented webhook
+  catalog captured verbatim from docs.edvisor.io. There is no publicly documented
+  signature/verification header.

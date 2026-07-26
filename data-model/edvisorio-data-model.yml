@@ -1,0 +1,77 @@
+generated: '2026-07-19'
+method: derived
+source: live introspection of https://api-v2.edvisor.io/graphql (graphql/edvisorio-api-v2-graphql.graphql)
+summary: >-
+  Entity-relationship graph derived from the Edvisor.io GraphQL schema (497 object
+  types, 318 input types, 226 queries, 203 mutations). The domain centers on the
+  student-recruitment marketplace: Agencies quote Students against School Offerings,
+  which become Enrollments and Invoices.
+entities:
+  - name: Student
+    key: studentId
+    query: student / studentsList
+    relationships:
+      - {type: belongs_to, target: Agency, via: agency}
+      - {type: belongs_to, target: User, via: owner}
+      - {type: has_many, target: StudentQuote, via: studentQuotes}
+      - {type: has_many, target: Quote, via: quotes}
+      - {type: has_many, target: StudentEnrollment, via: studentEnrollments}
+      - {type: has_many, target: StudentCoursePreference, via: studentCoursePreferences}
+      - {type: has_many, target: StudentSchoolPreference, via: studentSchoolPreferences}
+      - {type: has_one, target: Country, via: nationality}
+  - name: StudentQuote
+    key: studentQuoteId
+    query: studentQuote / studentQuotesList
+    relationships:
+      - {type: belongs_to, target: Student, via: student}
+      - {type: belongs_to, target: Agency, via: agency}
+      - {type: belongs_to, target: User, via: agentUser}
+      - {type: has_one, target: StudentQuoteStatus, via: studentQuoteStatus}
+      - {type: has_many, target: StudentQuoteOption, via: studentQuoteOptions}
+      - {type: has_one, target: AgencyQuoteCustomization, via: agencyQuoteCustomization}
+  - name: Offering
+    key: offeringId
+    query: offering / offeringsList
+    relationships:
+      - {type: belongs_to, target: School, via: school}
+      - {type: has_one, target: OfferingType, via: offeringType}
+      - {type: has_one, target: OfferingCourse, via: offeringCourse}
+      - {type: has_one, target: OfferingAccommodation, via: offeringAccommodation}
+      - {type: has_one, target: OfferingInsurance, via: offeringInsurance}
+      - {type: has_many, target: Fee, via: applicableFees}
+      - {type: has_one, target: Currency, via: currency}
+  - name: School
+    key: schoolId
+    query: school / schoolsList
+    relationships:
+      - {type: belongs_to, target: SchoolCompany, via: schoolCompany}
+      - {type: has_one, target: Country, via: country}
+      - {type: has_many, target: OfferingCourse, via: courses}
+      - {type: has_many, target: Fee, via: fees}
+  - name: SchoolCompany
+    key: schoolCompanyId
+    query: getSchoolCompanyApiKey / availableCurrenciesBySchoolCompany
+    relationships:
+      - {type: has_one, target: Country, via: country}
+      - {type: has_many, target: School, via: schools}
+      - {type: has_many, target: ListedAgencyCompany, via: connectedAgencyCompanies}
+  - name: AgencyCompany
+    key: agencyCompanyId
+    query: agencyCompany
+    relationships:
+      - {type: has_many, target: Agency, via: agencies}
+      - {type: has_many, target: SchoolCompany, via: connectedSchoolCompanies}
+      - {type: has_many, target: AgencyCompanyCurrency, via: agencyCompanyCurrencies}
+  - name: Invoice
+    key: invoiceId
+    query: invoice / invoiceList
+    relationships:
+      - {type: belongs_to, target: Student, via: student}
+      - {type: has_many, target: InvoiceItem, via: rawItems}
+      - {type: has_many, target: InvoicePayment, via: invoicePayments}
+      - {type: has_one, target: InvoiceStatus, via: invoiceStatus}
+      - {type: has_one, target: Currency, via: paymentCurrency}
+notes: >-
+  Shared reference entities (Country, Currency, User, File, Photo, GooglePlace)
+  are linked across most core entities. Derived from GraphQL field types; only a
+  representative slice of the 497-type schema is captured here.

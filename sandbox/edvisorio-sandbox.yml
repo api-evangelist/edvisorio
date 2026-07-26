@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.edvisor.io/
+summary: >-
+  Edvisor.io does not publish a separate sandbox/test environment or test data set
+  (no test-vs-live key prefixes, no test cards). The documented way to explore the
+  API before integrating is an interactive GraphQL console.
+console:
+  type: GraphQL Playground
+  description: >-
+    A web-based GraphQL Playground is provided to explore the Edvisor API and
+    test-drive queries and mutations against the live schema; its DOCS/SCHEMA tab
+    reflects the introspected schema.
+  reference: https://www.graphqlbin.com/
+  endpoint: https://api-v2.edvisor.io/graphql
+  auth_required: true
+  auth: Bearer API key in the Authorization header (see authentication/edvisorio-authentication.yml)
+test_data:
+  published: false
+  notes: >-
+    No magic test identifiers, test currency rates, or fixture tooling are
+    documented. Consumers test against their own agency account data using a real
+    API key issued by support@edvisor.io.

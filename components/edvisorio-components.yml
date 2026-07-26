@@ -1,0 +1,22 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.npmjs.com/package/@edvisor/product-language
+summary: >-
+  Edvisor.io publishes a first-party client-side UI component library ("product
+  language" design system) on npm, distinct from any server-side API SDK.
+families:
+  - name: product-language
+    kind: design-system / web UI components
+    registry: npm
+    package: "@edvisor/product-language"
+    url: https://www.npmjs.com/package/@edvisor/product-language
+    repository: https://github.com/edvisor-io/front-end
+    license: MIT
+    version: 0.11.121
+    description: >-
+      Edvisor.io's reusable front-end component library used across the Edvisor web
+      application. Also captured in packages/edvisorio-packages.yml.
+notes: >-
+  There is no documented embeddable/hosted widget surface (e.g. drop-in quote
+  widget) beyond the "Web 2 Leads" HTML form and "Web Quotes Engine" described in
+  the docs, which are integration patterns rather than a component library.

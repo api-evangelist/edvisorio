@@ -1,0 +1,43 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.edvisor.io/ + live introspection of https://api-v2.edvisor.io/graphql
+format: graphql-errors
+summary: >-
+  Edvisor.io is a GraphQL API: it does NOT use RFC 9457 problem+json. Per the
+  GraphQL specification and the Edvisor docs, requests return HTTP 200 and any
+  failure is reported in the top-level "errors" array of the JSON response. Each
+  error carries a message, source locations, an optional path, and an extensions
+  object whose "code" classifies the error.
+envelope:
+  http_status: 200
+  location: response.errors[]
+  fields:
+    - name: message
+      description: Human-readable description of the error
+    - name: locations
+      description: Line/column positions in the GraphQL document that produced the error
+    - name: path
+      description: Response path to the field that errored
+    - name: extensions.code
+      description: Machine-readable error classification code
+problems:
+  - code: GRAPHQL_PARSE_FAILED
+    title: GraphQL document failed to parse
+    evidence: observed live from api-v2.edvisor.io/graphql on a malformed query
+  - code: GRAPHQL_VALIDATION_FAILED
+    title: Query is syntactically valid but violates the schema (unknown field/type/argument)
+    source: standard graphql-js validation code
+  - code: BAD_USER_INPUT
+    title: A resolver rejected the supplied argument values
+    source: standard apollo-server error code
+  - code: UNAUTHENTICATED
+    title: Missing or invalid Authorization Bearer API key
+    source: standard apollo-server error code
+  - code: INTERNAL_SERVER_ERROR
+    title: Unhandled server-side error
+    source: standard apollo-server error code
+notes: >-
+  Only GRAPHQL_PARSE_FAILED was observed verbatim from the live endpoint; the
+  remaining codes are the standard graphql-js / apollo-server extension codes the
+  stack emits and are included as the expected classification surface. Edvisor does
+  not publish a numbered error-code registry.

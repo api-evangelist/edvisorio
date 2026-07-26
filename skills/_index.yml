@@ -1,0 +1,12 @@
+generated: '2026-07-19'
+method: generated
+source: graphql/edvisorio-api-v2-graphql.graphql
+skills:
+  - file: edvisorio-create-and-quote-student.md
+    name: Create a student and build a quote
+    api: graphql/edvisorio-api-v2-graphql.graphql
+    operations: [createStudent, offeringsList, generateQuotePrice, createStudentQuote, publishStudentQuote]
+  - file: edvisorio-sync-via-webhooks.md
+    name: Keep an external CRM in sync with Edvisor.io
+    api: graphql/edvisorio-api-v2-graphql.graphql
+    operations: [student, studentsList, offering, schoolQuoteList, invoiceList]

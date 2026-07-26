@@ -1,7 +1,28 @@
 aid: edvisorio
 name: Edvisor.io
-description: Edvisor.io is a company surfaced as a portfolio company of techstars and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Edvisor.io is a B2B international-education recruitment platform that connects
+  education agencies with 700+ partner schools across 80+ countries. Agencies browse
+  school portfolios with live pricing, build and send student quotes, manage the
+  student journey from inquiry through enrollment, and track commissions and invoices;
+  schools distribute programs to 5,000+ active agencies, grow and manage their agency
+  network, and analyze their enrollment pipeline. The platform has processed over $2B
+  in tuition. Edvisor exposes a GraphQL API at api-v2.edvisor.io/graphql (226 queries,
+  203 mutations, Bearer API-key auth) plus webhooks for two-way synchronization with
+  external CRM and back-office systems.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.edvisor.io/images/og-image.png
 url: https://raw.githubusercontent.com/api-evangelist/edvisorio/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,15 +32,101 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Education
+- Student Recruitment
+- International Education
+- EdTech
+- GraphQL
+- Marketplace
+- Webhooks
+apis:
+- name: Edvisor.io GraphQL API
+  description: >-
+    Single GraphQL API for the Edvisor.io education-recruitment platform, covering
+    students, quotes, school offerings, enrollments, invoices, and agency/school
+    company management. Bearer API-key authentication; server-side use only.
+  humanURL: https://docs.edvisor.io/
+  baseURL: https://api-v2.edvisor.io/graphql
+  properties:
+  - type: GraphQL
+    url: graphql/edvisorio-api-v2-graphql.graphql
+  - type: Introspection
+    url: graphql/edvisorio-api-v2-introspection.json
+  - type: Webhooks
+    url: asyncapi/edvisorio-webhooks.yml
+  - type: Authentication
+    url: authentication/edvisorio-authentication.yml
+  - type: Documentation
+    url: https://docs.edvisor.io/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/edvisorio-domain-security.yml
 - type: Website
   url: https://edvisor.io/
+- type: DeveloperPortal
+  url: https://docs.edvisor.io/
+- type: Documentation
+  url: https://docs.edvisor.io/
+- type: APIReference
+  url: https://docs.edvisor.io/
+- type: GettingStarted
+  url: https://docs.edvisor.io/
+- type: GraphQL
+  url: graphql/edvisorio-api-v2-graphql.graphql
+- type: Webhooks
+  url: asyncapi/edvisorio-webhooks.yml
+- type: Authentication
+  url: authentication/edvisorio-authentication.yml
+- type: Conventions
+  url: conventions/edvisorio-conventions.yml
+- type: ErrorCatalog
+  url: errors/edvisorio-problem-types.yml
+- type: DataModel
+  url: data-model/edvisorio-data-model.yml
+- type: Packages
+  url: packages/edvisorio-packages.yml
+- type: Components
+  url: components/edvisorio-components.yml
+- type: MCPServer
+  url: mcp/edvisorio-mcp.yml
+- type: LLMsTxt
+  url: llms/edvisorio-llms.txt
+- type: Lifecycle
+  url: lifecycle/edvisorio-lifecycle.yml
+- type: Conformance
+  url: conformance/edvisorio-conformance.yml
+- type: Compliance
+  url: https://edvisor.io/privacy
+- type: Sandbox
+  url: sandbox/edvisorio-sandbox.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: GitHubOrganization
+  url: https://github.com/edvisor-io
+- type: Blog
+  url: https://blog.edvisor.io
+- type: Pricing
+  url: https://edvisor.io/pricing
+- type: SignUp
+  url: https://edvisor.io/pricing#agencies
+- type: Login
+  url: https://app.edvisor.io
+- type: Support
+  url: mailto:support@edvisor.io
+- type: TermsOfService
+  url: https://edvisor.io/terms
+- type: PrivacyPolicy
+  url: https://edvisor.io/privacy
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

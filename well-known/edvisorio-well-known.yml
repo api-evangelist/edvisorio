@@ -1,0 +1,25 @@
+generated: '2026-07-19'
+method: searched
+source: live probes of edvisor.io / api.edvisor.io / api-v2.edvisor.io / docs.edvisor.io
+summary: >-
+  No /.well-known/ discovery documents are published on any Edvisor host. All
+  probed paths returned 404 or 403. Recorded for provenance; no WellKnown pointer
+  is wired because nothing was found.
+hosts:
+  - host: https://edvisor.io
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /llms.txt, status: 404}
+  - host: https://api.edvisor.io
+    note: AWS API Gateway host; returns 403 MissingAuthenticationTokenException on all paths
+    documents:
+      - {path: /.well-known/security.txt, status: 403}
+      - {path: /.well-known/oauth-authorization-server, status: 403}
+  - host: https://docs.edvisor.io
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /llms.txt, status: 404}

@@ -1,0 +1,34 @@
+generated: '2026-07-19'
+method: derived
+source: live introspection of https://api-v2.edvisor.io/graphql + https://docs.edvisor.io/ + https://edvisor.io/privacy
+standards:
+  - id: graphql
+    conforms: true
+    evidence: GraphQL API with introspection enabled (RootQueryType/RootMutationType); 226 queries, 203 mutations
+  - id: webhooks
+    conforms: true
+    evidence: documented resource:action webhook events with before/after payloads and retry policy
+  - id: oauth2
+    conforms: false
+    evidence: authentication is a static Bearer API key, not OAuth 2.0
+  - id: openid-connect
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: GraphQL error envelope (errors[] with extensions.code), not application/problem+json
+  - id: rfc8594-sunset-header
+    conforms: false
+  - id: gdpr
+    conforms: true
+    evidence: GDPR / data-protection compliance stated in the privacy policy at https://edvisor.io/privacy
+  - id: pagination
+    conforms: true
+    evidence: offset/limit PaginationInput across list queries
+compliance_program:
+  published: true
+  frameworks: [GDPR]
+  source: https://edvisor.io/privacy
+  notes: >-
+    GDPR / data-protection is the only compliance posture Edvisor publishes. No
+    SOC 2, ISO 27001, PCI DSS, HIPAA, or FedRAMP certification is claimed, and no
+    trust center exists.

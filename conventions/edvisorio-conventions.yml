@@ -1,0 +1,51 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.edvisor.io/
+api_style: graphql
+endpoint: https://api-v2.edvisor.io/graphql
+summary: >-
+  Cross-cutting request/response semantics for the Edvisor.io GraphQL API, captured
+  from the developer docs and confirmed against a live schema introspection
+  (RootQueryType / RootMutationType).
+authentication:
+  style: http-bearer
+  header: Authorization
+  detail: See authentication/edvisorio-authentication.yml
+transport:
+  protocol: GraphQL over HTTP POST
+  content_type: application/json
+  request_shape: '{ "query": "...", "variables": {...} }'
+  http_status: >-
+    GraphQL requests return HTTP 200 even on error; failures are reported in the
+    top-level "errors" array of the response (GraphQL standard). See errors/edvisorio-problem-types.yml
+pagination:
+  style: offset-limit
+  input_object: PaginationInput
+  params:
+    - name: limit
+      description: Maximum number of records to return
+    - name: offset
+      description: Number of records to skip
+  example: 'schoolQuoteList(pagination: { limit: 3, offset: 0 }, filter: { schoolIds: [21] })'
+filtering:
+  style: per-query filter input object (e.g. FeesFilter, with fields such as agencyIds, schoolIds, created, orderBy)
+  common_fields: [agencyIds, schoolIds, created, orderBy]
+idempotency:
+  supported: false
+  notes: >-
+    No idempotency-key mechanism is documented. GraphQL mutations follow explicit
+    create/update/upsert/delete naming (createStudent, updateStudent, upsertStudent,
+    deleteStudents); upsert* operations are naturally idempotent by business key but
+    there is no request-level idempotency-key contract.
+versioning:
+  scheme: subdomain-in-host
+  current: v2
+  detail: The production API is served at api-v2.edvisor.io/graphql; GraphQL field-level evolution (deprecated fields) is used within v2.
+error_envelope:
+  location: response.errors[]
+  fields: [message, locations, path, extensions.code]
+  example_code: GRAPHQL_PARSE_FAILED
+webhooks:
+  cross_ref: asyncapi/edvisorio-webhooks.yml
+rate_limiting:
+  documented: false

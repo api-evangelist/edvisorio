@@ -1,0 +1,33 @@
+# Edvisor.io
+
+> Edvisor.io is a B2B international-education recruitment platform connecting education agencies with 700+ partner schools across 80+ countries. Agencies browse programs with live pricing, build quotes, manage the student journey through enrollment, and track commissions; schools distribute programs to 5,000+ agencies and manage their enrollment pipeline. The platform exposes a GraphQL API and webhooks for two-way synchronization with external CRM / back-office systems.
+
+## API
+
+- [GraphQL endpoint](https://api-v2.edvisor.io/graphql): Single GraphQL API — 226 queries, 203 mutations. Bearer API-key auth (Authorization header). Server-side only.
+- [Developer docs](https://docs.edvisor.io/): Agency API guide, School API guide, Webhooks, Web 2 Leads form integration, GraphQL Playground.
+
+## Specs
+
+- [GraphQL SDL](graphql/edvisorio-api-v2-graphql.graphql): Schema derived from live introspection.
+- [GraphQL introspection](graphql/edvisorio-api-v2-introspection.json): Raw introspection JSON.
+- [Webhook catalog](asyncapi/edvisorio-webhooks.yml): student/school/campus/offering/startDateTemplate/studentQuote create/update/delete events.
+
+## Artifacts
+
+- [Authentication](authentication/edvisorio-authentication.yml): HTTP Bearer API key.
+- [Conventions](conventions/edvisorio-conventions.yml): GraphQL over HTTP POST, offset/limit pagination, errors[] envelope.
+- [Errors](errors/edvisorio-problem-types.yml): GraphQL error semantics (HTTP 200 + errors[] with extensions.code).
+- [Data model](data-model/edvisorio-data-model.yml): Student / Quote / Offering / School / Invoice entity graph.
+- [Packages](packages/edvisorio-packages.yml): first-party npm packages (@edvisor scope).
+- [Agent skills](skills/_index.yml): packaged flows for creating students and quotes.
+
+## Company
+
+- [Website](https://edvisor.io/)
+- [Pricing](https://edvisor.io/pricing)
+- [Blog](https://blog.edvisor.io)
+- [Login](https://app.edvisor.io)
+- [GitHub](https://github.com/edvisor-io)
+- [Terms](https://edvisor.io/terms)
+- [Privacy](https://edvisor.io/privacy)

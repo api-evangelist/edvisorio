@@ -1,0 +1,27 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.edvisor.io/
+versioning:
+  scheme: subdomain-in-host
+  current: v2
+  detail: >-
+    The production GraphQL API is served at api-v2.edvisor.io/graphql. Field-level
+    evolution (GraphQL deprecated fields, e.g. createStudentQuoteDeprecated) is used
+    within the v2 major version rather than a new URL per change.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: >-
+    No formal deprecation/sunset policy (RFC 8594) is published. Deprecated
+    operations are signalled in-schema (e.g. the createStudentQuoteDeprecated
+    mutation) and via GraphQL field deprecation.
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  notes: >-
+    An edvisor-io/status-page repository references status.edvisor.io, but that
+    hostname does not currently resolve (no DNS), so no live status page is claimed.
+deprecated_operations:
+  - "graphql RootMutationType#createStudentQuoteDeprecated"
