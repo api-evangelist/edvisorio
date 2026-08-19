@@ -2,11 +2,9 @@ generated: '2026-07-19'
 method: derived
 status: candidate
 source: live introspection of https://api-v2.edvisor.io/graphql
-summary: >-
-  Edvisor.io publishes no official hosted/remote MCP server. This is a CANDIDATE
-  tool list derived from marquee GraphQL operations (real query/mutation field
-  names verified in graphql/edvisorio-api-v2-graphql.graphql) as a starting point
-  for an agent-facing MCP wrapper. Not an authoritative provider claim.
+summary: Edvisor.io publishes no official hosted/remote MCP server. This is a CANDIDATE tool list derived
+  from marquee GraphQL operations (real query/mutation field names verified in graphql/edvisorio-api-v2-graphql.graphql)
+  as a starting point for an agent-facing MCP wrapper. Not an authoritative provider claim.
 server:
   name: edvisorio
   transport: http
@@ -14,39 +12,45 @@ server:
   auth: Bearer API key (Authorization header)
   upstream: https://api-v2.edvisor.io/graphql
 tools:
-  - name: get_student
-    description: Fetch a student by id
-    source_operation: graphql RootQueryType#student
-  - name: list_students
-    description: List/search students for an agency
-    source_operation: graphql RootQueryType#studentsList
-  - name: create_student
-    description: Create a student record
-    source_operation: graphql RootMutationType#createStudent
-  - name: update_student
-    description: Update a student record
-    source_operation: graphql RootMutationType#updateStudent
-  - name: create_web2lead_student
-    description: Create a student from an inbound web-to-lead form submission
-    source_operation: graphql RootMutationType#createWeb2LeadStudent
-  - name: list_offerings
-    description: List school program offerings
-    source_operation: graphql RootQueryType#offeringsList
-  - name: generate_quote_price
-    description: Compute pricing for a quote configuration
-    source_operation: graphql RootQueryType#generateQuotePrice
-  - name: create_student_quote
-    description: Create a student quote
-    source_operation: graphql RootMutationType#createStudentQuote
-  - name: publish_student_quote
-    description: Publish a student quote so it is visible to the student
-    source_operation: graphql RootMutationType#publishStudentQuote
-  - name: list_school_quotes
-    description: List quotes from the school-side web quotes engine
-    source_operation: graphql RootQueryType#schoolQuoteList
-  - name: list_invoices
-    description: List invoices
-    source_operation: graphql RootQueryType#invoiceList
-  - name: record_invoice_payment
-    description: Record a payment against an invoice
-    source_operation: graphql RootMutationType#recordInvoicePayment
+- name: get_student
+  description: Fetch a student by id
+  source_operation: graphql RootQueryType#student
+- name: list_students
+  description: List/search students for an agency
+  source_operation: graphql RootQueryType#studentsList
+- name: create_student
+  description: Create a student record
+  source_operation: graphql RootMutationType#createStudent
+- name: update_student
+  description: Update a student record
+  source_operation: graphql RootMutationType#updateStudent
+- name: create_web2lead_student
+  description: Create a student from an inbound web-to-lead form submission
+  source_operation: graphql RootMutationType#createWeb2LeadStudent
+- name: list_offerings
+  description: List school program offerings
+  source_operation: graphql RootQueryType#offeringsList
+- name: generate_quote_price
+  description: Compute pricing for a quote configuration
+  source_operation: graphql RootQueryType#generateQuotePrice
+- name: create_student_quote
+  description: Create a student quote
+  source_operation: graphql RootMutationType#createStudentQuote
+- name: publish_student_quote
+  description: Publish a student quote so it is visible to the student
+  source_operation: graphql RootMutationType#publishStudentQuote
+- name: list_school_quotes
+  description: List quotes from the school-side web quotes engine
+  source_operation: graphql RootQueryType#schoolQuoteList
+- name: list_invoices
+  description: List invoices
+  source_operation: graphql RootQueryType#invoiceList
+- name: record_invoice_payment
+  description: Record a payment against an invoice
+  source_operation: graphql RootMutationType#recordInvoicePayment
+deployment:
+  mode: none
+  verified: derived
+  tools: 12
+  checked: '2026-08-12'
+  source: catalog MCP census
