@@ -41,6 +41,15 @@ tags:
 - EdTech
 - GraphQL
 - Marketplace
+- Webhook
+tags_raw:
+- Company
+- Education
+- Student Recruitment
+- International Education
+- EdTech
+- GraphQL
+- Marketplace
 - Webhooks
 apis:
 - name: Edvisor.io GraphQL API
