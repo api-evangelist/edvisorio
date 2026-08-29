@@ -10,6 +10,17 @@ description: >-
   in tuition. Edvisor exposes a GraphQL API at api-v2.edvisor.io/graphql (226 queries,
   203 mutations, Bearer API-key auth) plus webhooks for two-way synchronization with
   external CRM and back-office systems.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
