@@ -2,6 +2,13 @@
   "repo": "edvisorio",
   "feeds": [
     {
+      "source": "https://blog.edvisor.io",
+      "feed_url": "https://blog.edvisor.io",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
       "source": "https://github.com/edvisor-io",
       "feed_url": "https://github.com/edvisor-io",
       "title": "",
@@ -10,5 +17,5 @@
     }
   ],
   "post_count": 0,
-  "fetched": "2026-10-03T12:30:02Z"
+  "fetched": "2026-10-10T13:15:00Z"
 }
